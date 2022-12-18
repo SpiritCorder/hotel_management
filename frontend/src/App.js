@@ -30,6 +30,7 @@ import Profile from './features/profile/Profile';
 import RoomView from './features/rooms/RoomView';
 import MyBookings from './features/bookings/MyBookings';
 import SingleBookingView from './features/bookings/SingleBookingView';
+import Unauthorized from './features/unauthorized/Unauthorized';
 
 const App = () => {
 
@@ -105,6 +106,12 @@ const App = () => {
           <Route element={<RequireAuth allowedRoles={['Customer', 'Employee', 'Admin']} />}>
             <Route path='dash' element={<DashLayout />}>
               <Route path='profile' element={<Profile />} />
+            </Route>
+          </Route>
+
+          <Route element={<RequireAuth allowedRoles={['Customer', 'Employee', 'Admin']} />}>
+            <Route path='unauthorized' element={<DashLayout />}>
+              <Route index element={<Unauthorized />} />
             </Route>
           </Route>
 
